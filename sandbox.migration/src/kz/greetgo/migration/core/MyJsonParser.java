@@ -42,11 +42,11 @@ public class MyJsonParser {
     objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     try {
       return objectMapper.readValue(json, tClass);
-    } catch (Exception e) {
-      //TODO error?
-      e.printStackTrace();
     }
-    return null;
+    catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
   }
 
 }

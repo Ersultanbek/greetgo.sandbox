@@ -17,7 +17,7 @@ public class ClientInRecord {
 
     public String toXml() {
       StringBuilder sb = new StringBuilder();
-      sb.append("<client id=\"").append(id).append("\">\n");
+      sb.append("<client client_id=\"").append(id).append("\">\n");
       if (surname != null) sb.append("<surname value=\"").append(surname).append("\"/>\n");
       if (name != null) sb.append("<name value=\"").append(name).append("\"/>");
       if (patronymic != null) sb.append("<patronymic value=\"").append(patronymic).append("\"/>\n");

@@ -5,6 +5,8 @@ public class AddressRecord {
     public String street;
     public String house;
     public String flat;
+    public Long client_number;
+    public String  client_id;
 
     public AddressRecord( Long client, Object type, String street, String house, String flat, Boolean actual) {
         this.type = AddressType.valueOf(type.toString());

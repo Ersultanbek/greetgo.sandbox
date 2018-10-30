@@ -116,7 +116,6 @@ public class MigrationJSONTest {
             //
             //
             Transaction retTransaction = migrationJSON.getTransactionById(id);
-
             //
             //
             assertThat(retTransaction).isNotNull();
@@ -168,6 +167,7 @@ public class MigrationJSONTest {
         try {
             gcd.insertAccountOrTransactionRec(accountInRecord);
             Long id = gcd.insertAccountOrTransactionRec(transaction);
+            assertThat(id).isNotNull();
             startMigration();
             //
             //

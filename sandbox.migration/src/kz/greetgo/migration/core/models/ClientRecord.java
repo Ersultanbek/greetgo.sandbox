@@ -36,7 +36,7 @@ public class ClientRecord extends SaxHandler {
     String path = path();
 
     if ("/client".equals(path)) {
-      id = attributes.getValue("id");
+      id = attributes.getValue("client_id");
       return;
     }
     else if ("/client/surname".equals(path)) {
@@ -73,7 +73,8 @@ public class ClientRecord extends SaxHandler {
     }
     else if("/client/address/fact".equals(path)){
       AddressRecord addressRecord = new AddressRecord();
-
+      addressRecord.client_id = id;
+      addressRecord.client_number = number;
       addressRecord.type = AddressType.FACT;
       addressRecord.street = attributes.getValue("street");
       addressRecord.house = attributes.getValue("house");
@@ -84,7 +85,8 @@ public class ClientRecord extends SaxHandler {
 
     else if("/client/address/register".equals(path)){
       AddressRecord addressRecord = new AddressRecord();
-
+      addressRecord.client_id = id;
+      addressRecord.client_number = number;
       addressRecord.type = AddressType.REG;
       addressRecord.street = attributes.getValue("street");
       addressRecord.house = attributes.getValue("house");
@@ -101,6 +103,8 @@ public class ClientRecord extends SaxHandler {
       Phone phone = new Phone();
       phone.type = PhoneType.WORK;
       phone.number = text();
+      phone.client_number = number;
+      phone.client_id = id;
 
       phoneList.add(phone);
     }
@@ -109,6 +113,8 @@ public class ClientRecord extends SaxHandler {
       Phone phone = new Phone();
       phone.type = PhoneType.HOME;
       phone.number = text();
+      phone.client_number = number;
+      phone.client_id = id;
 
       phoneList.add(phone);
     }
@@ -117,6 +123,8 @@ public class ClientRecord extends SaxHandler {
       Phone phone = new Phone();
       phone.type = PhoneType.MOBILE;
       phone.number = text();
+      phone.client_number = number;
+      phone.client_id = id;
 
       phoneList.add(phone);
     }

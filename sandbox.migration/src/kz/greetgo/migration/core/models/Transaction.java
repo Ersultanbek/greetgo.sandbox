@@ -12,4 +12,5 @@ public class Transaction {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm")
     public Date finished_at;
+    public Long number;
 }

@@ -1,7 +1,6 @@
 package kz.greetgo.migration.test;
 
 import kz.greetgo.migration.__prepare__.GenerateCiaData;
-import kz.greetgo.learn.migration.__prepare__.core.models.*;
 import kz.greetgo.migration.__prepare__.core.models.ClientInRecord;
 import kz.greetgo.migration.core.models.AddressRecord;
 import kz.greetgo.migration.core.models.ClientRecord;
@@ -193,7 +192,7 @@ public class MigrationXMLTest extends TestNG {
             ClientRecord migratedRecord = migrationXML.getClientByCiaID(clientInRecord.id);
             //
             //
-            List<Phone> phoneRecordList =  migrationXML.getClientPhnsByCiaID(clientInRecord.id);
+            List<Phone> phoneRecordList =  migrationXML.getClientPhnsByCiaID(migratedRecord.id);
             //
             //
             assertThat(phoneRecordList).isNotNull();

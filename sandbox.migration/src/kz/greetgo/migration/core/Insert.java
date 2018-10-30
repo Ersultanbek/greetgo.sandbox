@@ -25,8 +25,8 @@ public class Insert {
   public void field(@SuppressWarnings("unused") int no, String name, String value) {
     elementList.add(new InsertElement(name, value));
   }
-  @Override
-  public String toString() {
+
+  public String getSQL() {
     return "insert into " + tableName + " ("
       + elementList.stream().map(e -> e.name).collect(Collectors.joining(", "))
       + ") values ("

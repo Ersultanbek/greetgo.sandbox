@@ -5,6 +5,7 @@ import kz.greetgo.migration.util.ConnectionUtils;
 
 import java.io.Closeable;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
@@ -74,6 +75,10 @@ public class Migration implements Closeable {
     protected String r(String sql) {
         sql = sql.replaceAll("TMP_CLIENT",tmpClientTable);
         return sql;
+    }
+
+    protected PreparedStatement getOperConPrStmnt(String sql) throws Exception{
+        return operConnection.prepareStatement(sql);
     }
 
     protected void exec(String sql) throws SQLException {

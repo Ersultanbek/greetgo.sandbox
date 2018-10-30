@@ -35,7 +35,7 @@ public class LaunchMigration {
         System.out.println("------------------------------------------------------------------");
       }
       System.out.println("SQL REPORT CLIENTS");
-      migrationXML.print();
+
     }
 
     try (MigrationJSON migrationJSON  = new MigrationJSON(operCC, ciaCC)) {
@@ -55,7 +55,7 @@ public class LaunchMigration {
         System.out.println("------------------------------------------------------------------");
       }
       System.out.println("SQL REPORT ACCOUNT TRANSACTION");
-      migrationJSON.print();
+
     }
 
     file.delete();
