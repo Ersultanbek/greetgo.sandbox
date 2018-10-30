@@ -11,44 +11,42 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MyJsonParser {
-    JsonFactory factory = new JsonFactory();
-    JsonParser parser;
-    Map<String,String> map = new HashMap<>();
+  JsonFactory factory = new JsonFactory();
+  JsonParser parser;
+  Map<String, String> map = new HashMap<>();
 
-    public String getFieldValue(String jsonStr,String field) throws IOException {
-        parser = factory.createParser(jsonStr);
+  public String getFieldValue(String jsonStr, String field) throws IOException {
+    parser = factory.createParser(jsonStr);
 
-        while (!parser.isClosed()){
-            JsonToken token = parser.nextToken();
+    while (!parser.isClosed()) {
+      JsonToken token = parser.nextToken();
 
-            if(JsonToken.FIELD_NAME.equals(token)){
-                String fieldName = parser.getCurrentName();
-                if(fieldName != null && fieldName.equals(fieldName))
-                {
-                    parser.nextToken();
-                    String val = parser.getValueAsString();
-                    parser.close();
+      if (JsonToken.FIELD_NAME.equals(token)) {
+        String fieldName = parser.getCurrentName();
+        if (fieldName != null && fieldName.equals(fieldName)) {
+          parser.nextToken();
+          String val = parser.getValueAsString();
+          parser.close();
 
-                    return val;
-                }
-            }
+          return val;
         }
-        parser.close();
-        return null;
+      }
     }
+    parser.close();
+    return null;
+  }
 
-    public <T> T mapFromJSON(String json,Class<T> tClass){
+  public <T> T mapFromJSON(String json, Class<T> tClass) {
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        try
-        {
-             return objectMapper.readValue(json,tClass);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        return null;
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    try {
+      return objectMapper.readValue(json, tClass);
+    } catch (Exception e) {
+      //TODO error?
+      e.printStackTrace();
     }
+    return null;
+  }
 
 }
